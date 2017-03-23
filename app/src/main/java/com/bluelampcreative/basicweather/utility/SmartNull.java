@@ -4,10 +4,6 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
-/**
- * Created by seanlarson on 3/22/17.
- */
-
 public class SmartNull {
 
     public static <T> T create(Class<T> type) {

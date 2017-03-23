@@ -7,10 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import com.bluelampcreative.basicweather.BasicWeather;
 import com.bluelampcreative.basicweather.dagger.ApplicationComponent;
 
-/**
- * Created by seanlarson on 3/22/17.
- */
-
 public abstract class BaseActivity extends AppCompatActivity{
 
 

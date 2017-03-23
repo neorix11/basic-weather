@@ -15,6 +15,12 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            resValue("string", "wunderground_key", "09ce3cf8dd0ca699")
+        }
+        debug {
+            applicationIdSuffix ".debug"
+            debuggable true
+            resValue("string", "wunderground_key", "09ce3cf8dd0ca699")
         }
     }
 }

@@ -8,10 +8,6 @@ import com.bluelampcreative.basicweather.dagger.DaggerApplicationComponent;
 
 import timber.log.Timber;
 
-/**
- * Created by seanlarson on 3/22/17.
- */
-
 public class BasicWeather extends Application {
 
 
@@ -21,7 +17,7 @@ public class BasicWeather extends Application {
     public void onCreate() {
         super.onCreate();
 
-        if(BuildConfig.DEBUG) {
+        if (BuildConfig.DEBUG) {
             Timber.plant(new Timber.DebugTree());
         }
 

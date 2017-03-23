@@ -4,10 +4,6 @@ import com.bluelampcreative.basicweather.utility.SmartNull;
 
 import rx.subscriptions.CompositeSubscription;
 
-/**
- * Created by seanlarson on 3/22/17.
- */
-
 public abstract class BasePresenter<T> {
 
     private final Class<T> viewType;

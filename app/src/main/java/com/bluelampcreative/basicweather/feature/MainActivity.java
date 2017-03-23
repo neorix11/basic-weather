@@ -2,25 +2,26 @@ package com.bluelampcreative.basicweather.feature;
 
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.EditText;
 
 import com.bluelampcreative.basicweather.R;
 import com.bluelampcreative.basicweather.core.BaseActivity;
+import com.bluelampcreative.basicweather.views.LocationEntry;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.OnTextChanged;
+import rx.functions.Action1;
 
 public class MainActivity extends BaseActivity {
 
-    @BindView(R.id.edit_zip_code)
-    EditText zipCodeEntry;
 
     @BindView(R.id.btn_get_weather)
-    Button getWeatherButton;
+    Button weatherButton;
+
+    @BindView(R.id.location_entry)
+    LocationEntry locationEntry;
 
 
     @Inject
@@ -35,15 +36,23 @@ public class MainActivity extends BaseActivity {
 
         //DAGGER Injection
         getApplicationComponent().inject(this);
+
+        subscribeToDataEntry();
+    }
+
+    private void subscribeToDataEntry() {
+        locationEntry.subscribeToTextEntry()
+                .subscribe(new Action1<Boolean>() {
+                    @Override
+                    public void call(Boolean valid) {
+                        weatherButton.setEnabled(valid);
+                    }
+                });
     }
 
     @OnClick(R.id.btn_get_weather)
     public void onGetWeatherClick() {
-        presenter.getWeatherClick(zipCodeEntry.getText().toString());
+
     }
 
-    @OnTextChanged(R.id.edit_zip_code)
-    public void onZipTextChanged(CharSequence zip) {
-        getWeatherButton.setEnabled(zip.length() > 4);
-    }
 }

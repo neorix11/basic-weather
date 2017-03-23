@@ -4,9 +4,6 @@ import com.bluelampcreative.basicweather.core.BasePresenter;
 
 import timber.log.Timber;
 
-/**
- * Created by seanlarson on 3/22/17.
- */
 
 public class MainPresenter extends BasePresenter<MainContract.View> implements MainContract.Presenter {
 
