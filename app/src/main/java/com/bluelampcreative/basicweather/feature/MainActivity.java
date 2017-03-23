@@ -1,11 +1,20 @@
 package com.bluelampcreative.basicweather.feature;
 
+import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 
 import com.bluelampcreative.basicweather.R;
+import com.bluelampcreative.basicweather.adapters.WeatherListAdapter;
 import com.bluelampcreative.basicweather.core.BaseActivity;
+import com.bluelampcreative.basicweather.models.ForecastDay;
 import com.bluelampcreative.basicweather.views.LocationEntry;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -14,7 +23,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import rx.functions.Action1;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements MainContract.View {
 
 
     @BindView(R.id.btn_get_weather)
@@ -22,6 +31,12 @@ public class MainActivity extends BaseActivity {
 
     @BindView(R.id.location_entry)
     LocationEntry locationEntry;
+
+    @BindView(R.id.recycler_weather)
+    RecyclerView recyclerWeather;
+
+    List<ForecastDay> forcasts = new ArrayList<>();
+    WeatherListAdapter adapter = new WeatherListAdapter();
 
 
     @Inject
@@ -37,7 +52,14 @@ public class MainActivity extends BaseActivity {
         //DAGGER Injection
         getApplicationComponent().inject(this);
 
+
         subscribeToDataEntry();
+
+        presenter.registerView(this);
+
+        recyclerWeather.setLayoutManager(new LinearLayoutManager(this));
+        recyclerWeather.setAdapter(adapter);
+
     }
 
     private void subscribeToDataEntry() {
@@ -56,6 +78,13 @@ public class MainActivity extends BaseActivity {
                 locationEntry.getCity(),
                 locationEntry.getState()
         );
+        InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+        imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
+
     }
 
+    @Override
+    public void updateWeatherList(List<ForecastDay> weatherList) {
+        adapter.setItems(weatherList);
+    }
 }

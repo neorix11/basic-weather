@@ -34,7 +34,7 @@ public class MainPresenter extends BasePresenter<MainContract.View> implements M
                 .subscribe(new Action1<List<ForecastDay>>() {
                     @Override
                     public void call(List<ForecastDay> forecastDays) {
-
+                        getView().updateWeatherList(forecastDays);
                     }
                 });
     }
