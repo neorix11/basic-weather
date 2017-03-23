@@ -13,7 +13,6 @@ import com.bluelampcreative.basicweather.core.BaseActivity;
 import com.bluelampcreative.basicweather.models.ForecastDay;
 import com.bluelampcreative.basicweather.views.LocationEntry;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -35,7 +34,6 @@ public class MainActivity extends BaseActivity implements MainContract.View {
     @BindView(R.id.recycler_weather)
     RecyclerView recyclerWeather;
 
-    List<ForecastDay> forcasts = new ArrayList<>();
     WeatherListAdapter adapter = new WeatherListAdapter();
 
 
@@ -62,6 +60,7 @@ public class MainActivity extends BaseActivity implements MainContract.View {
 
     }
 
+    //RxSubscription
     private void subscribeToDataEntry() {
         locationEntry.subscribeToTextEntry()
                 .subscribe(new Action1<Boolean>() {
