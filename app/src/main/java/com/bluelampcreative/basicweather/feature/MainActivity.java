@@ -52,7 +52,10 @@ public class MainActivity extends BaseActivity {
 
     @OnClick(R.id.btn_get_weather)
     public void onGetWeatherClick() {
-
+        presenter.getWeatherClick(
+                locationEntry.getCity(),
+                locationEntry.getState()
+        );
     }
 
 }

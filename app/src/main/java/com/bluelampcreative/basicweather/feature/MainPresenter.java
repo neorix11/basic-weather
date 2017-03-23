@@ -18,7 +18,7 @@ public class MainPresenter extends BasePresenter<MainContract.View> implements M
     }
 
     @Override
-    public void getWeatherClick(String zipCode) {
-        Timber.e("ZIP IS: %s", zipCode);
+    public void getWeatherClick(String city, String state) {
+        Timber.e("Your location is %s, %s", city, state);
     }
 }

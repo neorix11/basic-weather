@@ -11,8 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="3"
         android:hint="CITY"
-        android:inputType="textCapCharacters"
-        android:maxLength="5" />
+        android:inputType="textCapCharacters" />
 
     <EditText
         android:id="@+id/edit_state"

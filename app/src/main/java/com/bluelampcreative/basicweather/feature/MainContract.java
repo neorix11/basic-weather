@@ -8,6 +8,6 @@ public interface MainContract {
 
     public interface Presenter {
 
-        void getWeatherClick(String zipCode);
+        void getWeatherClick(String city, String state);
     }
 }
