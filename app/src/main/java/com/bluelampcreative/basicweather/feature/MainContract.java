@@ -2,11 +2,11 @@ package com.bluelampcreative.basicweather.feature;
 
 public interface MainContract {
 
-    public interface View {
+    interface View {
 
     }
 
-    public interface Presenter {
+    interface Presenter {
 
         void getWeatherClick(String city, String state);
     }
