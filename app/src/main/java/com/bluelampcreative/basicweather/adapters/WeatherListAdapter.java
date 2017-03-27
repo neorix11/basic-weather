@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.bluelampcreative.basicweather.R;
 import com.bluelampcreative.basicweather.models.ForecastDay;
-import com.bumptech.glide.Glide;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,11 +46,13 @@ public class WeatherListAdapter extends RecyclerView.Adapter<WeatherListAdapter.
 
         holder.titletext.setText(items.get(position).getTitle());
         holder.report.setText(items.get(position).getFcttext());
-        Glide.with(context)
+
+
+        Picasso.with(context)
                 .load(items.get(position).getIcon_url())
+                .resize(50, 50)
                 .centerCrop()
                 .placeholder(R.drawable.img_ph)
-                .crossFade()
                 .into(holder.weatherIcon);
     }
 
